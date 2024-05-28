@@ -9,6 +9,4 @@
         state: stopped
 
     - name: Start Docker
-      service:
-        name: docker
-        state: started
+      shell: sudo docker-compose up
