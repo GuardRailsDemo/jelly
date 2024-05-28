@@ -3,7 +3,12 @@
   hosts: all
   become: yes
   tasks:
-    - name: Restart Docker
+    - name: Stop Docker
       service:
         name: docker
-        state: restarted
+        state: stopped
+
+    - name: Start Docker
+      service:
+        name: docker
+        state: started
