@@ -3,14 +3,14 @@
   hosts: all
   become: yes
   tasks:
-    - name: Stop Docker
+    - name: Restart Docker
       service:
         name: docker
-        state: stopped
-        
-    - name: Wait for 5 seconds
-      pause:
-        seconds: 5
-        
-    - name: Start Docker
-      shell: sudo docker-compose up
+        state: restarted
+    
+    - name: run Docker
+      shell: docker compose up
+      args:
+        chdir: /home/ubuntu/easyTravel-Docker/
+      async: 10
+      poll: 0  
